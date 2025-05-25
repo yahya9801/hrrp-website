@@ -36,7 +36,7 @@ const RecruiterSection = () => {
               .
             </p>
             <a
-              href="/terms-and-conditionss"
+              href="/terms-and-conditions"
               className="inline-block text-blue-600 font-medium hover:underline transition"
             >
               Please check our terms and conditions of Job Ads.

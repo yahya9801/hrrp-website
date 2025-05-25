@@ -39,7 +39,7 @@ const Navbar = () => {
             )}
           </div>
 
-          <Link to="/advertise" className="text-gray-700 hover:text-blue-600 font-semibold">Advertise with Us</Link>
+          <Link to="/advertise-with-us" className="text-gray-700 hover:text-blue-600 font-semibold">Advertise with Us</Link>
           <Link to="/contact-us" className="text-gray-700 hover:text-blue-600 font-semibold">Contact Us</Link>
         </div>
 
@@ -61,7 +61,7 @@ const Navbar = () => {
           <Link to="/full-time" className="block text-gray-700 hover:text-blue-600">Full-Time</Link>
           <Link to="/part-time" className="block text-gray-700 hover:text-blue-600">Part-Time</Link>
           <Link to="/internships" className="block text-gray-700 hover:text-blue-600">Internships</Link>
-          <Link to="/advertise" className="block text-gray-700 hover:text-blue-600 font-semibold">Advertise with Us</Link>
+          <Link to="/advertise-with-us" className="block text-gray-700 hover:text-blue-600 font-semibold">Advertise with Us</Link>
           <Link to="/contact-us" className="block text-gray-700 hover:text-blue-600 font-semibold">Contact Us</Link>
         </div>
       </div>

@@ -4,7 +4,7 @@ import { Facebook, Twitter, Instagram, Mail, Phone, MapPin, ChevronRight } from 
 const Footer = () => {
   // Sample services - replace with your actual services
   const services = [
-    { name: 'Advertise with Us', href: '/advertsie-with-us' },
+    { name: 'Advertise with Us', href: '/advertise-with-us' },
     { name: 'Special Presence Job Ads', href: '/special-presence-job-ads' },
     { name: 'Open Platforms', href: '/open-platforms' }
   ];
@@ -12,7 +12,7 @@ const Footer = () => {
   // Sample important links - replace with your actual important pages
   const importantLinks = [
     { name: 'Terms & Conditions', href: '/terms-and-conditions' },
-    { name: 'Feedback Form', href: '/feedback-form' }
+    { name: 'Feedback Form', href: 'https://docs.google.com/forms/d/18JtWOD_mZB0sIavYudSkZF-ZIlRuEYlOoR7HZwQ7zZ8/edit?usp=drivesdk' }
   ];
 
   // Information links
@@ -115,6 +115,9 @@ const Footer = () => {
                 <li key={index}>
                   <a 
                     href={link.href}
+                    {...(link.name === "Feedback Form"
+                      ? { target: "_blank", rel: "noopener noreferrer" }
+                      : {})}
                     className="group flex items-center text-slate-300 hover:text-white transition-all duration-300 text-sm"
                   >
                     <ChevronRight size={14} className="mr-2 text-slate-500 group-hover:text-purple-400 group-hover:translate-x-1 transition-all duration-300" />
