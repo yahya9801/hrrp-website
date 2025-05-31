@@ -56,7 +56,7 @@ const OpenPlatformsFull = () => (
     <div className="mb-8">
       Please check our{" "}
       <a
-        href="/terms"
+        href="/terms-and-conditions"
         className="text-blue-600 underline hover:text-blue-800"
       >
         terms and conditions
