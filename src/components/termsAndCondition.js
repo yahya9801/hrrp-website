@@ -5,9 +5,9 @@ const TermsAndConditions = () => (
   <section className="max-w-3xl mx-auto bg-white shadow rounded-lg p-4 sm:p-8 my-8">
     {/* Title */}
     <div className="flex justify-center mb-6">
-      <span className="bg-blue-600 text-white text-2xl sm:text-3xl font-bold rounded-lg px-6 py-2 text-center shadow">
+    <h3 className="text-2xl sm:text-3xl font-bold text-blue-500">
         Terms and Conditions
-      </span>
+      </h3>
     </div>
 
     {/* Main Content */}
