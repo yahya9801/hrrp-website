@@ -21,7 +21,7 @@ const JobCards = () => {
     { title: "Jobs in Islamabad/Rawalpindi", link: "/jobs-in-islamabad-rawalpindi", imageUrl: islamabad },
     { title: "Jobs in Faisalabad", link: "/jobs-in-faisalabad", imageUrl: faisalabad },
     { title: "Remote Jobs for Pakistan", link: "/remote-jobs-for-pakistan", imageUrl: remote_jobs },
-    { title: "Jobs/Internship for Non-experienced", link: "/jobs-internships-for-non-experienced", imageUrl: jobs_non_experienced },
+    { title: "Jobs/Internship for Non-Experienced", link: "/jobs-internships-for-non-experienced", imageUrl: jobs_non_experienced },
   ];
 
   // Split the data into first row (4 cards) and remaining rows

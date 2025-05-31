@@ -177,7 +177,14 @@ const RecruiterSection = () => {
           <p className="text-lg text-gray-700">
             We have different packages and different slot times. Please Whatsapp
             message us at{" "}
-            <span className="font-semibold">+92 322 337 9647</span> for further
+            <a
+              href="https://wa.me/923223379647"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-semibold text-blue-700"
+            >
+              +92 322 337 9647
+            </a> for further
             details.
           </p>
           <a href="/terms-and-conditions" className="text-blue-500 hover:underline">
