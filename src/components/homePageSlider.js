@@ -1,16 +1,18 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { ChevronLeft, ChevronRight, Pause, Play } from 'lucide-react';
+import community1 from '../images/community_1.png';
+import community2 from '../images/community_2.png';
+
+import community3 from '../images/community_3.png';
+
 
 const HomePageSlider = () => {
   // Sample images - replace with your actual image URLs
   const images = [
-    { id: 1, src: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&h=400&fit=crop', alt: 'Mountain landscape' },
-    { id: 2, src: 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=600&h=400&fit=crop', alt: 'Forest path' },
-    { id: 3, src: 'https://images.unsplash.com/photo-1506197603052-3cc9c3a201bd?w=600&h=400&fit=crop', alt: 'Ocean waves' },
-    { id: 4, src: 'https://images.unsplash.com/photo-1501594907352-04cda38ebc29?w=600&h=400&fit=crop', alt: 'Desert dunes' },
-    { id: 5, src: 'https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=600&h=400&fit=crop', alt: 'Lake reflection' },
-    { id: 6, src: 'https://images.unsplash.com/photo-1519904981063-b0cf448d479e?w=600&h=400&fit=crop', alt: 'Snow mountains' },
-  ];
+    { id: 1, src: community1, alt: 'Mountain landscape' },
+    { id: 2, src: community2, alt: 'Forest path' },
+    { id: 3, src: community3, alt: 'Ocean waves' },
+      ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(true);
@@ -129,7 +131,7 @@ const HomePageSlider = () => {
       {/* Header */}
       <div className="flex justify-between items-center p-6 bg-black/30 backdrop-blur-md border-b border-white/10">
         <div>
-          <h2 className="text-2xl font-bold text-black mb-1">What our Community Say</h2>
+          <h2 className="text-3xl font-semibold text-blue-500">What our Community Say</h2>
           {/* <p className="text-slate-300 text-sm">Discover amazing landscapes</p> */}
         </div>
         {/* <button

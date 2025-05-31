@@ -6,9 +6,9 @@ const SpecialPresence = () => (
   <section className="max-w-4xl mx-auto bg-white rounded-lg shadow p-4 sm:p-8 my-10">
     {/* Title */}
     <div className="flex justify-center mb-6">
-      <span className="bg-blue-600 text-white text-2xl sm:text-3xl font-bold rounded-lg px-6 sm:px-12 py-3 text-center shadow">
+    <h3 className="text-2xl sm:text-3xl font-bold text-blue-500">
         Special Presence<br className="sm:hidden" /> for your Job Ad
-      </span>
+    </h3>
     </div>
 
     {/* Description */}
@@ -16,7 +16,8 @@ const SpecialPresence = () => (
       <p>
         If your job ad follows our terms and conditions and follows LinkedIn Community guidelines, then you may share your LinkedIn page <span className="font-bold">at a very affordable rate</span>.
         Whatsapp message us at:{" "}
-        <a href="https://wa.me/923223379647" className="text-blue-600 underline hover:text-blue-800">
+        <a href="https://wa.me/923223379647" target="_blank"
+            rel="noopener noreferrer" className="text-blue-600 underline hover:text-blue-800">
           +92 322 337 9647
         </a>{" "}
         for further details.
@@ -27,7 +28,7 @@ const SpecialPresence = () => (
         <span className="text-blue-700 text-3xl font-bold">in</span>
         <div>
           <a
-            href="https://www.linkedin.com/company/hr-posting-partner"
+            href="https://www.linkedin.com/company/hr-posting-partner/"
             target="_blank"
             rel="noopener noreferrer"
             className="text-blue-700 font-medium hover:underline"

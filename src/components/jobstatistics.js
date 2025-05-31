@@ -9,7 +9,7 @@ const JobStatistics = () => {
           {/* First Statistic - Job Ads */}
           <div className="flex flex-col items-center">
             <FaBriefcase className="text-4xl text-white-700 mb-2" />
-            <p className="text-lg font-semibold text-white-700">500+ Job ads Every week</p>
+            <p className="text-lg font-semibold text-white-700">500+ job ads every week</p>
           </div>
 
           {/* Second Statistic - Found Jobs */}

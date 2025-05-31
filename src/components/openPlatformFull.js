@@ -1,14 +1,15 @@
 import React from "react";
 import { Facebook, Linkedin } from "lucide-react";
+import { FaFacebook, FaLinkedin } from 'react-icons/fa';
 import japHrppLogo from "../images/open_platform.png"; // Still import your JAP banner
 
 const OpenPlatformsFull = () => (
-  <section className="max-w-3xl mx-auto bg-white rounded-lg shadow p-4 sm:p-8 my-10">
+  <section className="max-w-3xl mx-auto bg-white rounded-lg shadow-2xl p-4 sm:p-8 my-10">
     {/* Title */}
     <div className="flex justify-center mb-6">
-      <span className="bg-blue-600 text-white text-2xl sm:text-3xl font-bold rounded-lg px-8 py-2 text-center shadow">
+    <h3 className="text-2xl sm:text-3xl font-bold text-blue-500">
         Open Platforms
-      </span>
+    </h3>
     </div>
 
     {/* Description */}
@@ -20,28 +21,29 @@ const OpenPlatformsFull = () => (
     <div className="flex flex-col sm:flex-row justify-center items-center gap-6 mb-4">
       {/* Facebook */}
       <a
-        href="https://www.facebook.com/groups/your-group"
+        href="https://www.facebook.com/groups/644836695155098"
         target="_blank"
         rel="noopener noreferrer"
-        className="flex items-center space-x-2 text-blue-700 hover:underline font-medium"
+        className="flex items-center space-x-2 hover:text-blue-600"
       >
-        <Facebook className="w-10 h-10" />
+        <FaFacebook className="w-6 h-6" />
         <span>Click for Open Facebook Group Platform</span>
       </a>
+     
       {/* LinkedIn */}
       <a
-        href="https://www.linkedin.com/groups/your-group"
+        href="https://www.linkedin.com/groups/13176545"
         target="_blank"
         rel="noopener noreferrer"
-        className="flex items-center space-x-2 text-blue-700 hover:underline font-medium"
+        className="flex items-center space-x-2 hover:text-blue-600"
       >
-        <Linkedin className="w-10 h-10" />
-        <span>Click for Open LinkedIn Group Platform</span>
+        <FaLinkedin className="w-6 h-6" />
+        <span>Visit LinkedIn Page</span>
       </a>
     </div>
 
     {/* Benefits */}
-    <div className="text-gray-800 mb-4 text-left sm:ml-16">
+    <div className="text-gray-800 mb-4 text-left">
       <div className="font-semibold mb-1">Benefits of our open platforms:</div>
       <ul className="list-disc pl-6 text-base space-y-1">
         <li>Post as many jobs as you like.</li>

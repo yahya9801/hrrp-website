@@ -1,5 +1,6 @@
 import React from 'react'
 import Layout from '../components/layout' // If you want to wrap it with Layout
+import karachi from '../images/jobs_in_karachi.png';
 
 const JobsInKarachi = () => {
   return (
@@ -9,16 +10,24 @@ const JobsInKarachi = () => {
         <h1 className="text-4xl font-bold text-center text-blue-600 mb-6">Jobs in Karachi</h1>
 
         {/* Main Content */}
+
+        <div className="flex justify-center mt-8 mb-4">
+          <img
+            src={karachi}
+            alt="JAP by HRPP"
+            className="rounded-lg w-full max-w-sm h-auto"
+          />
+        </div>
         <div className="text-center">
           <p className="text-xl mb-4">Hey there! Are you looking for a job in Karachi?</p>
           <p className="text-xl mb-6">
-            We have a WhatsApp Channel and Facebook page full of job opportunities in Karachi.
+          We have a WhatsApp Channel full of job opportunities in Karachi.
           </p>
 
           {/* WhatsApp Channel Button */}
           <div className="mb-4">
             <a
-              href="https://wa.me/your-whatsapp-channel" // Replace with your actual WhatsApp channel link
+              href="https://whatsapp.com/channel/0029Vb22YxqC1Fu2UDptEa0G" // Replace with your actual WhatsApp channel link
               target="_blank"
               rel="noopener noreferrer"
               className="inline-block bg-green-500 text-white py-2 px-6 rounded-full hover:bg-green-600"

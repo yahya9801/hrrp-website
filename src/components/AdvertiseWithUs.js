@@ -35,9 +35,9 @@ const AdvertiseWithUs = () => (
   <section className="max-w-5xl mx-auto bg-white rounded-lg shadow p-4 sm:p-8 my-10">
     {/* Title */}
     <div className="flex justify-center mb-6">
-      <span className="bg-blue-600 text-white text-2xl sm:text-3xl font-bold rounded-lg px-8 py-2 text-center shadow">
+    <h3 className="text-2xl sm:text-3xl font-bold text-blue-500">
         Advertise with Us
-      </span>
+    </h3>
     </div>
     {/* Description */}
     <div className="text-gray-800 text-base sm:text-lg mb-4 space-y-2 text-center">
@@ -71,21 +71,29 @@ const AdvertiseWithUs = () => (
         <div key={idx} className="rounded-2xl border border-gray-300 shadow text-center py-6 px-2 bg-white">
           <div className="text-xl font-semibold mb-4 text-blue-700">{slot.time}</div>
           <div className="space-y-3">
-            {slot.packages.map((pkg, i) => (
-              <div key={i} className="flex flex-col sm:flex-row items-center justify-between bg-blue-50 rounded-lg px-3 py-2">
-                <div className="text-sm sm:text-base font-medium w-full sm:w-auto text-gray-700">
-                  {pkg.posts} post{pkg.posts > 1 ? "s" : ""}
-                </div>
-                <div className="mt-1 sm:mt-0 sm:ml-2 text-white bg-blue-700 px-4 py-1 rounded font-semibold text-base sm:text-lg w-full sm:w-auto text-center">
-                  {pkg.price}
-                </div>
-                {pkg.sub && (
-                  <div className="w-full text-xs text-gray-600 text-center sm:text-right mt-1 sm:mt-0">
-                    {pkg.sub}
-                  </div>
-                )}
+          {slot.packages.map((pkg, i) => (
+            <div>
+            <div key={i} className="flex flex-col sm:flex-row items-center justify-between bg-blue-50 rounded-lg px-3 py-2">
+              <div className="text-sm sm:text-base font-medium w-full sm:w-auto text-gray-700">
+                {pkg.posts} post{pkg.posts > 1 ? "s" : ""}
               </div>
-            ))}
+              <div className="mt-1 sm:mt-0 sm:ml-2 text-white bg-blue-700 px-4 py-1 rounded font-semibold text-base sm:text-lg w-full sm:w-auto text-center">
+                {pkg.price}
+              </div>
+              
+            </div>
+            <div>
+           {pkg.sub && (
+          <div className="w-full text-xs text-gray-600 text-center sm:text-right mt-1 sm:mt-0">
+            {pkg.sub}
+          </div>
+        )}
+          </div>
+            </div>
+        
+        
+       
+      ))}
           </div>
         </div>
       ))}

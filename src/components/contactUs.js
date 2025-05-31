@@ -2,12 +2,12 @@ import React from "react";
 // import mapImage from "../images/map.png"; // Replace with your map image path
 
 const ContactUs = () => (
-  <section className="max-w-3xl mx-auto bg-white rounded-lg shadow p-4 sm:p-8 my-10">
+  <section className="max-w-3xl mx-auto bg-white rounded-lg shadow-2xl p-4 sm:p-8 my-10">
     {/* Title */}
     <div className="flex justify-center mb-6">
-      <span className="bg-blue-600 text-white text-2xl sm:text-3xl font-bold rounded-lg px-8 py-2 text-center shadow">
+    <h3 className="text-2xl sm:text-3xl font-bold text-blue-500">
         Contact Us
-      </span>
+    </h3>
     </div>
 
     {/* Main Content */}

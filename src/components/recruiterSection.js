@@ -7,13 +7,14 @@ import recruiters from "../images/recruiters.png"
 import special_presence from "../images/special_presence.png"
 import open_platform from "../images/open_platform.png"
 import advertise_with_us from "../images/advertise_with_us.png"
+import { FaFacebook, FaLinkedin } from 'react-icons/fa';
 
 const RecruiterSection = () => {
   return (
     <div className="bg-white py-10 px-4 lg:px-16">
       {/* Section 1: For Recruiters */}
       <div className="max-w-5xl mx-auto py-10">
-        <div className="flex flex-col-reverse lg:flex-row items-center bg-white shadow rounded-2xl p-6 sm:p-10 gap-8">
+        <div className="flex flex-col-reverse lg:flex-row items-center bg-white shadow-2xl rounded-2xl p-6 sm:p-10 gap-8">
           <div className="w-full lg:w-1/3 flex justify-center">
             <img
               src={recruiters}
@@ -48,7 +49,7 @@ const RecruiterSection = () => {
 
       {/*  Section 2: Want Special resence for your job ad? **/}
       <div className="max-w-5xl mx-auto py-10">
-        <div className="flex flex-col-reverse lg:flex-row items-center bg-white shadow rounded-2xl p-6 sm:p-10 gap-8">
+        <div className="flex flex-col-reverse lg:flex-row items-center bg-white shadow-2xl rounded-2xl p-6 sm:p-10 gap-8">
           {/* Right side: Text and button */}
           <div className="w-full lg:w-2/3 text-center lg:text-left space-y-4 lg:pr-8">
             <h3 className="text-2xl sm:text-3xl font-bold text-blue-500">
@@ -56,7 +57,7 @@ const RecruiterSection = () => {
             </h3>
             <p className="text-lg text-gray-700">
               If your job ad follows our terms and conditions and follows
-              LinkedIn Community guidelines, then you may share your LinkedIn
+              LinkedIn Community guidelines, then you may get your job ad posted on our LinkedIn 
               page at a very affordable rate. Whatsapp message us at{" "}
               <span className="font-semibold">+92 322 337 9647</span> for
               further details.
@@ -78,7 +79,7 @@ const RecruiterSection = () => {
 
       {/*  Section 3: Open Platform **/}
       <div className="max-w-5xl mx-auto py-10">
-        <div className="flex flex-col-reverse lg:flex-row items-center bg-white shadow rounded-2xl p-6 sm:p-10 gap-8">
+        <div className="flex flex-col-reverse lg:flex-row items-center bg-white shadow-2xl rounded-2xl p-6 sm:p-10 gap-8">
           {/* Right side: Text and button */}
           <div className="w-full lg:w-1/3 flex justify-center">
             <img
@@ -98,26 +99,29 @@ const RecruiterSection = () => {
             </p>
             {/* Social Buttons */}
             <div className="flex flex-wrap gap-6 items-center justify-center lg:justify-start mb-4">
-              <a
-                href="https://www.facebook.com/groups/your-group" // Replace with actual link
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center text-blue-600 font-medium hover:underline text-lg"
-              >
-                <span className="text-3xl mr-2">🔵</span>
-                Click for Open Facebook Group Platform
-              </a>
-              <a
-                href="https://www.linkedin.com/groups/your-group" // Replace with actual link
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center text-blue-600 font-medium hover:underline text-lg"
-              >
-                {/* You can replace the emoji with an <img src={linkedinLogo} ... /> if you have a logo */}
-                <span className="text-2xl mr-2">💼</span>
-                Click for Open LinkedIn Group Platform
-              </a>
-            </div>
+            {/* Facebook */}
+            <a
+              href="https://www.facebook.com/groups/644836695155098" // Replace with actual link
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center text-blue-600 font-medium hover:underline text-lg"
+            >
+              <FaFacebook className="text-3xl mr-2" />
+              Click for Open Facebook Group Platform
+            </a>
+
+            {/* LinkedIn */}
+            <a
+              href="https://www.linkedin.com/groups/13176545" // Replace with actual link
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center text-blue-600 font-medium hover:underline text-lg"
+            >
+              <FaLinkedin className="text-3xl mr-2" />
+              Click for Open LinkedIn Group Platform
+            </a>
+          </div>
+
             {/* Benefits */}
             <div className="text-gray-800 mb-4">
               <h3 className="font-semibold text-lg mb-2">
@@ -145,7 +149,7 @@ const RecruiterSection = () => {
 
        {/*  Section 4: Advertise with Us! **/}
        <div className="max-w-5xl mx-auto py-10">
-        <div className="flex flex-col-reverse lg:flex-row items-center bg-white shadow rounded-2xl p-6 sm:p-10 gap-8">
+        <div className="flex flex-col-reverse lg:flex-row items-center bg-white shadow-2xl rounded-2xl p-6 sm:p-10 gap-8">
           {/* Right side: Text and button */}
           <div className="lg:w-2/3 text-center lg:text-left space-y-4">
           <h3 className="text-3xl font-semibold text-blue-500">

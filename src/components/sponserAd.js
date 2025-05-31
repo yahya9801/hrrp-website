@@ -1,5 +1,5 @@
 import React from 'react';
-import sponsoredAd from '../images/sponsered-ad.jpg'
+import sponsoredAd from '../images/storonic-banner.png'
 
 const SponsoredAd = ({ imageUrl }) => {
   return (
@@ -7,7 +7,7 @@ const SponsoredAd = ({ imageUrl }) => {
       <img
         src={sponsoredAd}
         alt="Sponsor Ad"
-        className="w-3/5 object-contain m-0"
+        className="w-3/4 object-contain m-0"
         height={80}
       />
     </div>

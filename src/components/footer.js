@@ -35,7 +35,7 @@ const Footer = () => {
                 <span className="text-white font-bold text-xl">YC</span>
               </div>
               <div>
-                <h3 className="text-xl font-bold" style={{ color: '#ffffff' }}>Your Company</h3>
+                <h3 className="text-xl font-bold" style={{ color: '#ffffff' }}>HR Posting Partner</h3>
                 <p className="text-gray-400 text-sm" style={{ color: '#9ca3af' }}>Building Digital Excellence</p>
               </div>
             </div>
@@ -155,7 +155,7 @@ const Footer = () => {
             </ul>
 
             {/* Contact Information */}
-            <div className="space-y-3 pt-2 border-t border-slate-700">
+            {/* <div className="space-y-3 pt-2 border-t border-slate-700">
               <div className="flex items-center space-x-3 text-slate-300 text-sm">
                 <div className="w-8 h-8 bg-slate-700/50 rounded-lg flex items-center justify-center">
                   <Mail size={14} className="text-purple-400" />
@@ -176,7 +176,7 @@ const Footer = () => {
                 </div>
                 <span>123 Business St, City, ST 12345</span>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
@@ -187,11 +187,11 @@ const Footer = () => {
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <div className="flex items-center space-x-4">
               <p className="text-gray-400 text-sm" style={{ color: '#9ca3af' }}>
-                © 2024 Your Company. All rights reserved.
+                © 2025 HR Posting Partner. All rights reserved.
               </p>
             </div>
             
-            <div className="flex items-center space-x-6 text-sm text-slate-400">
+            {/* <div className="flex items-center space-x-6 text-sm text-slate-400">
               <a href="/sitemap" className="hover:text-white transition-colors duration-300">
                 Sitemap
               </a>
@@ -202,7 +202,7 @@ const Footer = () => {
                 <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
                 <span>All systems operational</span>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
