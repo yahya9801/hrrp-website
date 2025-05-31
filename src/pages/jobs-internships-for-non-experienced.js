@@ -20,7 +20,7 @@ const JobsInexperieced = () => {
         <div className="text-center">
           <p className="text-xl mb-4">Hey there! Are you looking for a job/internship in Pakistan?</p>
           <p className="text-xl mb-6">
-            We have a WhatsApp Channel and Facebook page full of job/internship opportunities for Non-Experienced.
+          We have a WhatsApp Channel full of job/internship opportunities for Non-Experienced."
           </p>
 
           {/* WhatsApp Channel Button */}
