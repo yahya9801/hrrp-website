@@ -1,6 +1,6 @@
 // src/components/AboutUs.js
 import React from "react";
-import aboutImage from "../images/advertise_with_us.png"; // Replace with your actual image path
+import aboutImage from '../images/main_banner.png' // Replace with your actual image path
 
 const AboutUs = () => (
   <section className="max-w-3xl mx-auto bg-white rounded-lg shadow-2xl p-4 sm:p-8 my-10">
