@@ -5,7 +5,7 @@ const slotPackages = [
   {
     time: "11:00 AM",
     packages: [
-      { posts: 1, price: "PKR 400" },
+      { posts: 1, price: "PKR 400 " },
       { posts: 3, price: "PKR 1,125", sub: "PKR 375 each" },
       { posts: 5, price: "PKR 1,750", sub: "PKR 350 each" },
       { posts: 10, price: "PKR 3,250", sub: "PKR 325 each" }
@@ -14,7 +14,7 @@ const slotPackages = [
   {
     time: "03:00 PM",
     packages: [
-      { posts: 1, price: "PKR 500" },
+      { posts: 1, price: "PKR 500 " },
       { posts: 3, price: "PKR 1,425", sub: "PKR 475 each" },
       { posts: 5, price: "PKR 2,250", sub: "PKR 450 each" },
       { posts: 10, price: "PKR 4,250", sub: "PKR 425 each" }
@@ -23,7 +23,7 @@ const slotPackages = [
   {
     time: "9:00 PM",
     packages: [
-      { posts: 1, price: "PKR 750" },
+      { posts: 1, price: "PKR 750 " },
       { posts: 3, price: "PKR 2,175", sub: "PKR 725 each" },
       { posts: 5, price: "PKR 3,500", sub: "PKR 700 each" },
       { posts: 10, price: "PKR 6,750", sub: "PKR 675 each" }

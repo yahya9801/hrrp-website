@@ -31,9 +31,14 @@ const RecruiterSection = () => {
               We have some terms and conditions to avoid scam or fake jobs, so
               if you follow those T&amp;C, you may share your job ad/s on our
               official Whatsapp Number:{" "}
-              <span className="font-semibold text-blue-700">
+              <a
+                href="https://wa.me/923223379647"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-semibold text-blue-700"
+              >
                 +92 322 337 9647
-              </span>
+              </a>
               .
             </p>
             <a
@@ -59,7 +64,14 @@ const RecruiterSection = () => {
               If your job ad follows our terms and conditions and follows
               LinkedIn Community guidelines, then you may get your job ad posted on our LinkedIn 
               page at a very affordable rate. Whatsapp message us at{" "}
-              <span className="font-semibold">+92 322 337 9647</span> for
+              <a
+                href="https://wa.me/923223379647"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-semibold text-blue-700"
+              >
+                +92 322 337 9647
+              </a> for
               further details.
             </p>
             <a href="/terms-and-conditions" className="text-blue-500 hover:underline">
