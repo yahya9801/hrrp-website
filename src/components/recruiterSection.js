@@ -11,9 +11,9 @@ import { FaFacebook, FaLinkedin } from 'react-icons/fa';
 
 const RecruiterSection = () => {
   return (
-    <div className="bg-white py-10 px-4 lg:px-16">
+    <div className="bg-white py-4 px-4 lg:px-16">
       {/* Section 1: For Recruiters */}
-      <div className="max-w-5xl mx-auto py-10">
+      <div className="max-w-7xl mx-auto py-4">
         <div className="flex flex-col-reverse lg:flex-row items-center bg-white shadow-2xl rounded-2xl p-6 sm:p-10 gap-8">
           <div className="w-full lg:w-1/3 flex justify-center">
             <img
@@ -53,7 +53,7 @@ const RecruiterSection = () => {
       </div>
 
       {/*  Section 2: Want Special resence for your job ad? **/}
-      <div className="max-w-5xl mx-auto py-10">
+      <div className="max-w-7xl mx-auto py-4">
         <div className="flex flex-col-reverse lg:flex-row items-center bg-white shadow-2xl rounded-2xl p-6 sm:p-10 gap-8">
           {/* Right side: Text and button */}
           <div className="w-full lg:w-2/3 text-center lg:text-left space-y-4 lg:pr-8">
@@ -90,7 +90,7 @@ const RecruiterSection = () => {
       </div>
 
       {/*  Section 3: Open Platform **/}
-      <div className="max-w-5xl mx-auto py-10">
+      <div className="max-w-7xl mx-auto py-4">
         <div className="flex flex-col-reverse lg:flex-row items-center bg-white shadow-2xl rounded-2xl p-6 sm:p-10 gap-8">
           {/* Right side: Text and button */}
           <div className="w-full lg:w-1/3 flex justify-center">
@@ -160,7 +160,7 @@ const RecruiterSection = () => {
       </div>
 
        {/*  Section 4: Advertise with Us! **/}
-       <div className="max-w-5xl mx-auto py-10">
+       <div className="max-w-7xl mx-auto py-4">
         <div className="flex flex-col-reverse lg:flex-row items-center bg-white shadow-2xl rounded-2xl p-6 sm:p-10 gap-8">
           {/* Right side: Text and button */}
           <div className="lg:w-2/3 text-center lg:text-left space-y-4">

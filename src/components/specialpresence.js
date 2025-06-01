@@ -14,7 +14,7 @@ const SpecialPresence = () => (
     {/* Description */}
     <div className="text-gray-800 text-base sm:text-lg mb-5 space-y-3">
       <p>
-        If your job ad follows our terms and conditions and follows LinkedIn Community guidelines, then you may get your job ad posted on our LinkedIn page at a very affordable rate.</span>.
+        If your job ad follows our terms and conditions and follows LinkedIn Community guidelines, then you may get your job ad posted on our LinkedIn page at a very affordable rate.
         Whatsapp message us at:{" "}
         <a href="https://wa.me/923223379647" target="_blank"
             rel="noopener noreferrer" className="text-blue-600 underline hover:text-blue-800">

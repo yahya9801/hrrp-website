@@ -26,37 +26,48 @@ const HomePageSlider = () => {
 
   const goToSlide = (index, smooth = true) => {
     if (isTransitioning) return;
-    
+  
     setIsTransitioning(true);
     setCurrentIndex(index);
-    
+  
+    // Check if we're on mobile or desktop
+    const isMobile = window.innerWidth < 768; // Mobile breakpoint
+  
+    // For mobile, we translate by 100% for each slide
+    // For desktop, we translate by 33.333% for each slide (showing 3 slides)
+    const slideWidth = isMobile ? 100 : 33.333;
+  
     if (sliderRef.current) {
+      // Apply smooth transition if necessary
       sliderRef.current.style.transition = smooth ? 'transform 0.5s ease-in-out' : 'none';
-      // Move to show 3 images starting from the target index
-      sliderRef.current.style.transform = `translateX(-${(index + 3) * 33.333}%)`;
+  
+      // Calculate the translate value
+      sliderRef.current.style.transform = `translateX(-${index * slideWidth}%)`;
+      console.log(index * slideWidth)
     }
-
-    setTimeout(() => {
-      setIsTransitioning(false);
-      
-      // Handle seamless loop
-      if (index >= totalSlides) {
-        const newIndex = index - totalSlides;
-        setCurrentIndex(newIndex);
-        if (sliderRef.current) {
-          sliderRef.current.style.transition = 'none';
-          sliderRef.current.style.transform = `translateX(-${(newIndex + 3) * 33.333}%)`;
-        }
-      } else if (index < 0) {
-        const newIndex = totalSlides + index;
-        setCurrentIndex(newIndex);
-        if (sliderRef.current) {
-          sliderRef.current.style.transition = 'none';
-          sliderRef.current.style.transform = `translateX(-${(newIndex + 3) * 33.333}%)`;
-        }
-      }
-    }, 500);
+  
+    // setTimeout(() => {
+    //   setIsTransitioning(false);
+  
+    //   // Seamless loop handling
+    //   if (index >= totalSlides) {
+    //     const newIndex = index - totalSlides; // Loop to the start
+    //     setCurrentIndex(newIndex);
+    //     if (sliderRef.current) {
+    //       sliderRef.current.style.transition = 'none';
+    //       sliderRef.current.style.transform = `translateX(-${newIndex * slideWidth}%)`;
+    //     }
+    //   } else if (index < 0) {
+    //     const newIndex = totalSlides + index; // Loop to the end
+    //     setCurrentIndex(newIndex);
+    //     if (sliderRef.current) {
+    //       sliderRef.current.style.transition = 'none';
+    //       sliderRef.current.style.transform = `translateX(-${newIndex * slideWidth}%)`;
+    //     }
+    //   }
+    // }, 500);
   };
+  
 
   const nextSlide = () => {
     goToSlide(currentIndex + 1);
@@ -108,26 +119,31 @@ const HomePageSlider = () => {
   };
 
   // Auto-play effect
-  useEffect(() => {
-    if (isPlaying) {
-      startAutoPlay();
-    } else {
-      stopAutoPlay();
-    }
+  // useEffect(() => {
+  //   if (isPlaying) {
+  //     startAutoPlay();
+  //   } else {
+  //     stopAutoPlay();
+  //   }
 
-    return () => stopAutoPlay();
-  }, [isPlaying, startAutoPlay, stopAutoPlay]);
+  //   return () => stopAutoPlay();
+  // }, [isPlaying, startAutoPlay, stopAutoPlay]);
 
   // Separate effect to handle slide transitions
-  useEffect(() => {
-    if (sliderRef.current) {
-      sliderRef.current.style.transition = 'transform 0.5s ease-in-out';
-      sliderRef.current.style.transform = `translateX(-${(currentIndex + 3) * 33.333}%)`;
-    }
-  }, [currentIndex]);
+  // useEffect(() => {
+  //   const isMobile = window.innerWidth < 768; 
+  //   if (sliderRef.current) {
+  //     sliderRef.current.style.transition = 'transform 0.5s ease-in-out';
+
+  //     const slideWidth = isMobile ? 100 : 33.333;
+      
+  //     sliderRef.current.style.transform = `translateX(-${(currentIndex +3)* slideWidth}%)`;
+
+  //   }
+  // }, [currentIndex]);
 
   return (
-    <div className="relative w-full max-w-7xl mx-auto bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 rounded-2xl overflow-hidden shadow-2xl border border-slate-700/50">
+    <div className="relative sm:w-fullw-full max-w-7xl mx-auto bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 rounded-2xl overflow-hidden shadow-2xl border border-slate-700/50">
       {/* Header */}
       <div className="flex justify-between items-center p-6 bg-black/30 backdrop-blur-md border-b border-white/10">
         <div>
@@ -160,7 +176,7 @@ const HomePageSlider = () => {
           {extendedImages.map((image, index) => (
             <div
               key={`${image.id}-${index}`}
-              className="w-1/3 flex-shrink-0 px-3 py-4"
+              className="w-full sm:w-1/3 flex-shrink-0 px-3 py-4"
             >
               <div className="relative group overflow-hidden rounded-xl bg-gradient-to-br from-purple-600/10 to-blue-600/10 backdrop-blur-sm border border-white/10 hover:border-white/20 transition-all duration-300">
                 <div className="aspect-video overflow-hidden rounded-lg">
@@ -172,13 +188,6 @@ const HomePageSlider = () => {
                   />
                 </div>
                 
-                {/* Overlay on hover */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 rounded-lg flex items-end">
-                  <div className="p-4 text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-                    <h3 className="font-bold text-lg mb-1">{image.alt}</h3>
-                    <p className="text-sm text-gray-200 opacity-90">Click to explore this view</p>
-                  </div>
-                </div>
 
                 {/* Subtle glow effect */}
                 <div className="absolute -inset-1 bg-gradient-to-r from-purple-500/20 to-blue-500/20 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10 blur-sm"></div>
