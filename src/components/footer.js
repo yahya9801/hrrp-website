@@ -1,5 +1,6 @@
 import React from 'react';
-import { Facebook, Twitter, Instagram, Mail, Phone, MapPin, ChevronRight } from 'lucide-react';
+import logo from "../images/hrrp_logo.png"
+import { Facebook, Twitter, Linkedin, Mail, Phone, MapPin, ChevronRight } from 'lucide-react';
 
 const Footer = () => {
   // Sample services - replace with your actual services
@@ -31,24 +32,30 @@ const Footer = () => {
           <div className="space-y-6">
             {/* Company Logo */}
             <div className="flex items-center space-x-3">
-              <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-blue-600 rounded-xl flex items-center justify-center shadow-lg">
-                <span className="text-white font-bold text-xl">YC</span>
+            <div className="w-12 h-12 rounded-xl flex items-center justify-center shadow-lg">
+              <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center overflow-hidden">
+                <img
+                  src={logo} // <-- Replace with actual logo path
+                  alt="Logo"
+                  className="w-full h-full object-contain"
+                />
               </div>
+            </div>
               <div>
-                <h3 className="text-xl font-bold" style={{ color: '#ffffff' }}>HR Posting Partner</h3>
-                <p className="text-gray-400 text-sm" style={{ color: '#9ca3af' }}>Building Digital Excellence</p>
+                <h3 className="text-xl font-bold text-white">HR Posting Partner</h3>
+                {/* <p className="text-sm text-gray-400">Building Digital Excellence</p> */}
               </div>
             </div>
             
             {/* Company Description */}
             <p className="text-gray-300 text-sm leading-relaxed" style={{ color: '#d1d5db' }}>
-              We create innovative digital solutions that help businesses grow and succeed in the modern world.
+                We are HR based Marketing business providing Job Ads service along with marketing for other companies or businesses.
             </p>
             
             {/* Social Media Links */}
             <div className="flex space-x-4">
               <a 
-                href="https://facebook.com" 
+                href="https://www.facebook.com/profile.php?id=100087877179793" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="w-10 h-10 bg-gray-700 hover:bg-blue-600 rounded-lg flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-lg border border-gray-600 hover:border-blue-500"
@@ -57,25 +64,27 @@ const Footer = () => {
               >
                 <Facebook size={18} />
               </a>
+              
               <a 
-                href="https://twitter.com" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="w-10 h-10 bg-gray-700 hover:bg-sky-500 rounded-lg flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-lg border border-gray-600 hover:border-sky-500"
-                style={{ backgroundColor: '#374151', borderColor: '#4b5563' }}
-                aria-label="Visit our Twitter page"
-              >
-                <Twitter size={18} />
-              </a>
-              <a 
-                href="https://instagram.com" 
+                href="https://www.linkedin.com/company/hr-posting-partner/" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="w-10 h-10 bg-gray-700 hover:bg-pink-600 rounded-lg flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-lg border border-gray-600 hover:border-pink-500"
                 style={{ backgroundColor: '#374151', borderColor: '#4b5563' }}
                 aria-label="Visit our Instagram page"
               >
-                <Instagram size={18} />
+                <Linkedin size={18} />
+              </a>
+
+              <a 
+                href="https://whatsapp.com/channel/0029VaRWeF7DDmFRZuX0Ww0K" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="w-10 h-10 bg-gray-700 hover:bg-pink-600 rounded-lg flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-lg border border-gray-600 hover:border-pink-500"
+                style={{ backgroundColor: '#374151', borderColor: '#4b5563' }}
+                aria-label="Visit our Instagram page"
+              >
+                <Phone size={18} />
               </a>
             </div>
           </div>
