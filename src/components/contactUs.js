@@ -14,14 +14,14 @@ const ContactUs = () => (
     <div className="text-gray-800 space-y-4 text-base sm:text-lg">
       <p>
         Are you a recruiter and want to post your job ad on our Whatsapp Channel and Facebook page? If you follow our terms and conditions of job ad, then Whatsapp message us at:{" "}
-        <a href="https://wa.me/923223379647" className="text-blue-600 underline hover:text-blue-800">
+        <a href="https://wa.me/923223379647" target="_blank" rel="noopener noreferrer" className="text-blue-600 underline hover:text-blue-800">
           +92 322 337 9647
         </a>
         .
       </p>
       <p>
         Do you want to post a sponsored ad on our Whatsapp Channels and Facebook page? Whatsapp message us at:{" "}
-        <a href="https://wa.me/923223379647" className="text-blue-600 underline hover:text-blue-800">
+        <a href="https://wa.me/923223379647" target="_blank" rel="noopener noreferrer" className="text-blue-600 underline hover:text-blue-800">
           +92 322 337 9647
         </a>
         .

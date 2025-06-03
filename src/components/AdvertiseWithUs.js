@@ -48,7 +48,7 @@ const AdvertiseWithUs = () => (
         Promote your business tremendously and get the attention of new clients easily on our Whatsapp Channels and Facebook page <span className="font-bold">for a very affordable rates.</span> (No sponsored ad allowed on LinkedIn).
         <br />
         We have different packages and different slot times. Please Whatsapp message us at{" "}
-        <a href="https://wa.me/923223379647" className="text-blue-600 underline hover:text-blue-800">
+        <a href="https://wa.me/923223379647" target="_blank" rel="noopener noreferrer" className="text-blue-600 underline hover:text-blue-800">
           +92 322 337 9647
         </a>
         .
