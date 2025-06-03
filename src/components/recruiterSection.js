@@ -119,7 +119,7 @@ const RecruiterSection = () => {
               className="flex items-center text-blue-600 font-medium hover:underline text-lg"
             >
               <FaFacebook className="text-3xl mr-2" />
-              Click for Open Facebook Group Platform
+              Click to Open Facebook Group Platform
             </a>
 
             {/* LinkedIn */}
@@ -130,7 +130,7 @@ const RecruiterSection = () => {
               className="flex items-center text-blue-600 font-medium hover:underline text-lg"
             >
               <FaLinkedin className="text-3xl mr-2" />
-              Click for Open LinkedIn Group Platform
+              Click to Open LinkedIn Group Platform
             </a>
           </div>
 

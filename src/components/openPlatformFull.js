@@ -21,24 +21,24 @@ const OpenPlatformsFull = () => (
     <div className="flex flex-col sm:flex-row justify-center items-center gap-6 mb-4">
       {/* Facebook */}
       <a
-        href="https://www.facebook.com/groups/644836695155098"
+        href="https://www.facebook.com/groups/644836695155098" // Replace with actual link
         target="_blank"
         rel="noopener noreferrer"
-        className="flex items-center space-x-2 hover:text-blue-600"
+        className="flex items-center text-blue-600 font-medium hover:underline text-md"
       >
-        <FaFacebook className="w-6 h-6" />
-        <span>Click for Open Facebook Group Platform</span>
+        <FaFacebook className="text-3xl mr-2" />
+        Click to Open Facebook Group Platform
       </a>
      
       {/* LinkedIn */}
       <a
-        href="https://www.linkedin.com/groups/13176545"
+        href="https://www.linkedin.com/groups/13176545" // Replace with actual link
         target="_blank"
         rel="noopener noreferrer"
-        className="flex items-center space-x-2 hover:text-blue-600"
+        className="flex items-center text-blue-600 font-medium hover:underline text-md"
       >
-        <FaLinkedin className="w-6 h-6" />
-        <span>Visit LinkedIn Page</span>
+        <FaLinkedin className="text-3xl mr-2" />
+        Click to Open LinkedIn Group Platform
       </a>
     </div>
 
