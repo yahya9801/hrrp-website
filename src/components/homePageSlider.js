@@ -2,173 +2,134 @@ import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { ChevronLeft, ChevronRight, Pause, Play } from 'lucide-react';
 import community1 from '../images/community_1.png';
 import community2 from '../images/community_2.png';
-
 import community3 from '../images/community_3.png';
 
-
 const HomePageSlider = () => {
-  // Sample images - replace with your actual image URLs
   const images = [
     { id: 1, src: community1, alt: 'Mountain landscape' },
     { id: 2, src: community2, alt: 'Forest path' },
     { id: 3, src: community3, alt: 'Ocean waves' },
-      ];
+  ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(true);
   const [isTransitioning, setIsTransitioning] = useState(false);
+  const [visibleSlides, setVisibleSlides] = useState(window.innerWidth < 768 ? 1 : 3);
+
   const sliderRef = useRef(null);
   const autoPlayRef = useRef(null);
-
-  // Create extended array for seamless loop - duplicate first 3 and last 3
-  const extendedImages = [...images.slice(-3), ...images, ...images.slice(0, 3)];
   const totalSlides = images.length;
+  const clonedCount = visibleSlides;
+  const extendedImages = [...images.slice(-clonedCount), ...images, ...images.slice(0, clonedCount)];
 
-  const goToSlide = (index, smooth = true) => {
-    if (isTransitioning) return;
-  
-    setIsTransitioning(true);
-    setCurrentIndex(index);
-  
-    // Check if we're on mobile or desktop
-    const isMobile = window.innerWidth < 768; // Mobile breakpoint
-  
-    // For mobile, we translate by 100% for each slide
-    // For desktop, we translate by 33.333% for each slide (showing 3 slides)
-    const slideWidth = isMobile ? 100 : 33.333;
-  
-    if (sliderRef.current) {
-      // Apply smooth transition if necessary
-      sliderRef.current.style.transition = smooth ? 'transform 0.5s ease-in-out' : 'none';
-  
-      // Calculate the translate value
-      sliderRef.current.style.transform = `translateX(-${index * slideWidth}%)`;
-      console.log(index * slideWidth)
-    }
-  
-    // setTimeout(() => {
-    //   setIsTransitioning(false);
-  
-    //   // Seamless loop handling
-    //   if (index >= totalSlides) {
-    //     const newIndex = index - totalSlides; // Loop to the start
-    //     setCurrentIndex(newIndex);
-    //     if (sliderRef.current) {
-    //       sliderRef.current.style.transition = 'none';
-    //       sliderRef.current.style.transform = `translateX(-${newIndex * slideWidth}%)`;
-    //     }
-    //   } else if (index < 0) {
-    //     const newIndex = totalSlides + index; // Loop to the end
-    //     setCurrentIndex(newIndex);
-    //     if (sliderRef.current) {
-    //       sliderRef.current.style.transition = 'none';
-    //       sliderRef.current.style.transform = `translateX(-${newIndex * slideWidth}%)`;
-    //     }
-    //   }
-    // }, 500);
-  };
-  
+  const slideWidthPercent = useRef(visibleSlides === 1 ? 100 : 100 / visibleSlides);
 
-  const nextSlide = () => {
-    goToSlide(currentIndex + 1);
-  };
-
-  const prevSlide = () => {
-    goToSlide(currentIndex - 1);
-  };
-
-  const startAutoPlay = useCallback(() => {
-    if (autoPlayRef.current) clearInterval(autoPlayRef.current);
-    autoPlayRef.current = setInterval(() => {
-      setCurrentIndex(prev => (prev + 1) % totalSlides);
-    }, 4000);
-  }, [totalSlides]);
-
-  const stopAutoPlay = useCallback(() => {
-    if (autoPlayRef.current) {
-      clearInterval(autoPlayRef.current);
-      autoPlayRef.current = null;
-    }
+  // Handle screen resize
+  useEffect(() => {
+    const handleResize = () => {
+      const newVisibleSlides = window.innerWidth < 768 ? 1 : 3;
+      setVisibleSlides(newVisibleSlides);
+      slideWidthPercent.current = newVisibleSlides === 1 ? 100 : 100 / newVisibleSlides;
+      setCurrentIndex(newVisibleSlides); // Reset index to avoid errors
+      requestAnimationFrame(() => {
+        updateSlidePosition(newVisibleSlides, false);
+      });
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  const toggleAutoPlay = () => {
-    setIsPlaying(!isPlaying);
+  const updateSlidePosition = (index, smooth = true) => {
+    if (sliderRef.current) {
+      sliderRef.current.style.transition = smooth ? 'transform 0.5s ease-in-out' : 'none';
+      sliderRef.current.style.transform = `translateX(-${index * slideWidthPercent.current}%)`;
+    }
   };
 
-  // Handle touch/drag for mobile
+  const goToSlide = (index) => {
+    if (isTransitioning) return;
+    setIsTransitioning(true);
+    setCurrentIndex(index);
+    updateSlidePosition(index);
+
+    setTimeout(() => {
+      let adjustedIndex = index;
+      if (index >= totalSlides + clonedCount) {
+        adjustedIndex = clonedCount;
+        updateSlidePosition(adjustedIndex, false);
+      } else if (index < clonedCount) {
+        adjustedIndex = totalSlides + clonedCount - 1;
+        updateSlidePosition(adjustedIndex, false);
+      }
+      setCurrentIndex(adjustedIndex);
+      setIsTransitioning(false);
+    }, 500);
+  };
+
+  const nextSlide = () => goToSlide(currentIndex + 1);
+  const prevSlide = () => goToSlide(currentIndex - 1);
+
+  const startAutoPlay = useCallback(() => {
+    stopAutoPlay();
+    autoPlayRef.current = setInterval(() => {
+      goToSlide(currentIndex + 1);
+    }, 4000);
+  }, [currentIndex]);
+
+  const stopAutoPlay = () => {
+    if (autoPlayRef.current) clearInterval(autoPlayRef.current);
+  };
+
+  const toggleAutoPlay = () => {
+    setIsPlaying((prev) => !prev);
+  };
+
+  useEffect(() => {
+    if (isPlaying) startAutoPlay();
+    return stopAutoPlay;
+  }, [isPlaying, startAutoPlay]);
+
+  useEffect(() => {
+    setCurrentIndex(clonedCount);
+    updateSlidePosition(clonedCount, false);
+  }, [visibleSlides]);
+
   const [touchStart, setTouchStart] = useState(0);
   const [touchEnd, setTouchEnd] = useState(0);
-
-  const handleTouchStart = (e) => {
-    setTouchStart(e.targetTouches[0].clientX);
-  };
-
-  const handleTouchMove = (e) => {
-    setTouchEnd(e.targetTouches[0].clientX);
-  };
-
+  const handleTouchStart = (e) => setTouchStart(e.targetTouches[0].clientX);
+  const handleTouchMove = (e) => setTouchEnd(e.targetTouches[0].clientX);
   const handleTouchEnd = () => {
     if (!touchStart || !touchEnd) return;
-    
     const distance = touchStart - touchEnd;
-    const isLeftSwipe = distance > 50;
-    const isRightSwipe = distance < -50;
-
-    if (isLeftSwipe) nextSlide();
-    if (isRightSwipe) prevSlide();
+    if (distance > 50) nextSlide();
+    if (distance < -50) prevSlide();
+    setTouchStart(0);
+    setTouchEnd(0);
   };
 
-  // Auto-play effect
-  // useEffect(() => {
-  //   if (isPlaying) {
-  //     startAutoPlay();
-  //   } else {
-  //     stopAutoPlay();
-  //   }
-
-  //   return () => stopAutoPlay();
-  // }, [isPlaying, startAutoPlay, stopAutoPlay]);
-
-  // Separate effect to handle slide transitions
-  // useEffect(() => {
-  //   const isMobile = window.innerWidth < 768; 
-  //   if (sliderRef.current) {
-  //     sliderRef.current.style.transition = 'transform 0.5s ease-in-out';
-
-  //     const slideWidth = isMobile ? 100 : 33.333;
-      
-  //     sliderRef.current.style.transform = `translateX(-${(currentIndex +3)* slideWidth}%)`;
-
-  //   }
-  // }, [currentIndex]);
+  const displayIndex = ((currentIndex - clonedCount + totalSlides) % totalSlides) + 1;
 
   return (
-    <div className="relative sm:w-fullw-full max-w-7xl mx-auto bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 rounded-2xl overflow-hidden shadow-2xl border border-slate-700/50">
-      {/* Header */}
+    <div className="relative w-full max-w-7xl mx-auto bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 rounded-2xl overflow-hidden shadow-2xl border border-slate-700/50">
       <div className="flex justify-between items-center p-6 bg-black/30 backdrop-blur-md border-b border-white/10">
-        <div>
-          <h2 className="text-3xl font-semibold text-blue-500">What our Community Say</h2>
-          {/* <p className="text-slate-300 text-sm">Discover amazing landscapes</p> */}
-        </div>
-        {/* <button
+        <h2 className="text-3xl font-semibold text-blue-500">What our Community Say</h2>
+        <button
           onClick={toggleAutoPlay}
-          className="flex items-center space-x-2 px-4 py-2 bg-white/10 hover:bg-white/20 rounded-full transition-all duration-300 text-white backdrop-blur-sm border border-white/20 hover:border-white/30"
+          className="flex items-center space-x-2 px-4 py-2 bg-white/10 hover:bg-white/20 rounded-full text-white border border-white/20"
         >
           {isPlaying ? <Pause size={16} /> : <Play size={16} />}
           <span className="text-sm font-medium">{isPlaying ? 'Pause' : 'Play'}</span>
-        </button> */}
+        </button>
       </div>
 
-      {/* Slider Container */}
       <div className="m-10 relative overflow-hidden bg-gradient-to-r from-slate-800/50 to-slate-700/50">
-        {/* Current slide indicator */}
-        <div className="absolute top-4 right-4 z-10 px-3 py-1 bg-black/50 backdrop-blur-sm rounded-full text-white text-sm font-medium border border-white/20">
-          {currentIndex + 1} of {totalSlides}
+        <div className="absolute top-4 right-4 z-10 px-3 py-1 bg-black/50 rounded-full text-white text-sm font-medium border border-white/20">
+          {displayIndex} of {totalSlides}
         </div>
 
         <div
           ref={sliderRef}
-          className="flex transition-transform duration-500 ease-in-out"
+          className="flex"
           onTouchStart={handleTouchStart}
           onTouchMove={handleTouchMove}
           onTouchEnd={handleTouchEnd}
@@ -176,80 +137,36 @@ const HomePageSlider = () => {
           {extendedImages.map((image, index) => (
             <div
               key={`${image.id}-${index}`}
-              className="w-full sm:w-1/3 flex-shrink-0 px-3 py-4"
+              className="flex-shrink-0 px-3 py-4"
+              style={{ width: `${slideWidthPercent.current}%` }}
             >
-              <div className="relative group overflow-hidden rounded-xl bg-gradient-to-br from-purple-600/10 to-blue-600/10 backdrop-blur-sm border border-white/10 hover:border-white/20 transition-all duration-300">
+              <div className="relative group overflow-hidden rounded-xl bg-gradient-to-br from-purple-600/10 to-blue-600/10 border border-white/10 hover:border-white/20">
                 <div className="aspect-video overflow-hidden rounded-lg">
                   <img
                     src={image.src}
                     alt={image.alt}
                     className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110 group-hover:brightness-110"
-                    loading="lazy"
                   />
                 </div>
-                
-
-                {/* Subtle glow effect */}
-                <div className="absolute -inset-1 bg-gradient-to-r from-purple-500/20 to-blue-500/20 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10 blur-sm"></div>
               </div>
             </div>
           ))}
         </div>
 
-        {/* Navigation Arrows */}
         <button
           onClick={prevSlide}
           disabled={isTransitioning}
-          aria-label="Previous slide"
-          className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-black/40 hover:bg-black/60 backdrop-blur-md rounded-full flex items-center justify-center text-white transition-all duration-300 hover:scale-110 disabled:opacity-50 disabled:cursor-not-allowed border border-white/20 hover:border-white/30 shadow-lg"
+          className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-black/40 hover:bg-black/60 rounded-full text-white flex items-center justify-center border border-white/20 hover:border-white/30"
         >
           <ChevronLeft size={24} />
         </button>
-        
         <button
           onClick={nextSlide}
           disabled={isTransitioning}
-          aria-label="Next slide"
-          className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-black/40 hover:bg-black/60 backdrop-blur-md rounded-full flex items-center justify-center text-white transition-all duration-300 hover:scale-110 disabled:opacity-50 disabled:cursor-not-allowed border border-white/20 hover:border-white/30 shadow-lg"
+          className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-black/40 hover:bg-black/60 rounded-full text-white flex items-center justify-center border border-white/20 hover:border-white/30"
         >
           <ChevronRight size={24} />
         </button>
-      </div>
-
-      {/* Bottom section with dots and progress */}
-      <div className="bg-black/20 backdrop-blur-md border-t border-white/10">
-        {/* Dots Indicator */}
-        {/* <div className="flex justify-center items-center space-x-3 pt-4 pb-2">
-          {images.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => goToSlide(index)}
-              disabled={isTransitioning}
-              aria-label={`Go to slide ${index + 1}`}
-              className={`transition-all duration-300 hover:scale-125 disabled:cursor-not-allowed ${
-                index === currentIndex
-                  ? 'w-8 h-3 bg-gradient-to-r from-purple-500 to-blue-500 rounded-full shadow-lg shadow-purple-500/30'
-                  : 'w-3 h-3 bg-white/30 hover:bg-white/50 rounded-full'
-              }`}
-            />
-          ))}
-        </div> */}
-
-        {/* Progress Bar */}
-        {/* <div className="px-6 pb-4">
-          <div className="w-full h-1 bg-white/10 rounded-full overflow-hidden">
-            <div
-              className="h-full bg-gradient-to-r from-purple-500 via-blue-500 to-cyan-500 transition-all duration-300 rounded-full shadow-sm"
-              style={{
-                width: `${((currentIndex + 1) / totalSlides) * 100}%`,
-              }}
-            />
-          </div>
-          <div className="flex justify-between items-center mt-2 text-xs text-slate-400">
-            <span>Progress</span>
-            <span>{Math.round(((currentIndex + 1) / totalSlides) * 100)}%</span>
-          </div>
-        </div> */}
       </div>
     </div>
   );
