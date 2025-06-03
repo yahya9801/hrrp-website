@@ -11,43 +11,51 @@ const HomePageSlider = () => {
     { id: 3, src: community3, alt: 'Ocean waves' },
   ];
 
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [currentIndex, setCurrentIndex] = useState(1); // Start after cloned slide
   const [isPlaying, setIsPlaying] = useState(true);
   const [isTransitioning, setIsTransitioning] = useState(false);
-  const [visibleSlides, setVisibleSlides] = useState(window.innerWidth < 768 ? 1 : 3);
+  const [visibleSlides, setVisibleSlides] = useState(1); // Default: mobile view
 
   const sliderRef = useRef(null);
   const autoPlayRef = useRef(null);
+  const slideWidthPercent = useRef(100); // Default
+
   const totalSlides = images.length;
   const clonedCount = visibleSlides;
   const extendedImages = [...images.slice(-clonedCount), ...images, ...images.slice(0, clonedCount)];
 
-  const slideWidthPercent = useRef(visibleSlides === 1 ? 100 : 100 / visibleSlides);
-
-  // Handle screen resize
+  // Setup responsiveness on client only
   useEffect(() => {
+    if (typeof window === 'undefined') return;
+
     const handleResize = () => {
-      const newVisibleSlides = window.innerWidth < 768 ? 1 : 3;
-      setVisibleSlides(newVisibleSlides);
-      slideWidthPercent.current = newVisibleSlides === 1 ? 100 : 100 / newVisibleSlides;
-      setCurrentIndex(newVisibleSlides); // Reset index to avoid errors
+      const isMobile = window.innerWidth < 768;
+      const slides = isMobile ? 1 : 3;
+      setVisibleSlides(slides);
+      slideWidthPercent.current = isMobile ? 100 : 100 / slides;
+
+      const startIndex = slides;
+      setCurrentIndex(startIndex);
+
       requestAnimationFrame(() => {
-        updateSlidePosition(newVisibleSlides, false);
+        updateSlidePosition(startIndex, false);
       });
     };
+
+    handleResize();
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
   const updateSlidePosition = (index, smooth = true) => {
-    if (sliderRef.current) {
-      sliderRef.current.style.transition = smooth ? 'transform 0.5s ease-in-out' : 'none';
-      sliderRef.current.style.transform = `translateX(-${index * slideWidthPercent.current}%)`;
-    }
+    if (!sliderRef.current) return;
+    sliderRef.current.style.transition = smooth ? 'transform 0.5s ease-in-out' : 'none';
+    sliderRef.current.style.transform = `translateX(-${index * slideWidthPercent.current}%)`;
   };
 
   const goToSlide = (index) => {
     if (isTransitioning) return;
+
     setIsTransitioning(true);
     setCurrentIndex(index);
     updateSlidePosition(index);
@@ -80,9 +88,7 @@ const HomePageSlider = () => {
     if (autoPlayRef.current) clearInterval(autoPlayRef.current);
   };
 
-  const toggleAutoPlay = () => {
-    setIsPlaying((prev) => !prev);
-  };
+  const toggleAutoPlay = () => setIsPlaying((prev) => !prev);
 
   useEffect(() => {
     if (isPlaying) startAutoPlay();
@@ -90,16 +96,19 @@ const HomePageSlider = () => {
   }, [isPlaying, startAutoPlay]);
 
   useEffect(() => {
-    setCurrentIndex(clonedCount);
-    updateSlidePosition(clonedCount, false);
+    // Reset position on visibleSlides change
+    const startIndex = visibleSlides;
+    setCurrentIndex(startIndex);
+    updateSlidePosition(startIndex, false);
   }, [visibleSlides]);
 
+  // Touch handling
   const [touchStart, setTouchStart] = useState(0);
   const [touchEnd, setTouchEnd] = useState(0);
+
   const handleTouchStart = (e) => setTouchStart(e.targetTouches[0].clientX);
   const handleTouchMove = (e) => setTouchEnd(e.targetTouches[0].clientX);
   const handleTouchEnd = () => {
-    if (!touchStart || !touchEnd) return;
     const distance = touchStart - touchEnd;
     if (distance > 50) nextSlide();
     if (distance < -50) prevSlide();
@@ -111,6 +120,7 @@ const HomePageSlider = () => {
 
   return (
     <div className="relative w-full max-w-7xl mx-auto bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 rounded-2xl overflow-hidden shadow-2xl border border-slate-700/50">
+      {/* Header */}
       <div className="flex justify-between items-center p-6 bg-black/30 backdrop-blur-md border-b border-white/10">
         <h2 className="text-3xl font-semibold text-blue-500">What our Community Say</h2>
         <button
@@ -122,6 +132,7 @@ const HomePageSlider = () => {
         </button>
       </div>
 
+      {/* Slider */}
       <div className="m-10 relative overflow-hidden bg-gradient-to-r from-slate-800/50 to-slate-700/50">
         <div className="absolute top-4 right-4 z-10 px-3 py-1 bg-black/50 rounded-full text-white text-sm font-medium border border-white/20">
           {displayIndex} of {totalSlides}
@@ -153,6 +164,7 @@ const HomePageSlider = () => {
           ))}
         </div>
 
+        {/* Arrows */}
         <button
           onClick={prevSlide}
           disabled={isTransitioning}
