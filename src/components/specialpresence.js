@@ -66,7 +66,7 @@ const SpecialPresence = () => (
       </div>
       <div className="rounded-2xl border border-gray-300 shadow text-center py-6 px-2">
         <div className="text-xl font-semibold mb-2">08:00 PM</div>
-        <div className="text-blue-700 text-2xl font-bold">PKR 600</div>
+        <div className="text-blue-700 text-2xl font-bold">PKR 500</div>
       </div>
     </div>
   </section>
