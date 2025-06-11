@@ -123,13 +123,13 @@ const HomePageSlider = () => {
       {/* Header */}
       <div className="flex justify-between items-center p-6 bg-black/30 backdrop-blur-md border-b border-white/10">
         <h2 className="text-3xl font-semibold text-blue-500">What our Community Say</h2>
-        <button
+        {/* <button
           onClick={toggleAutoPlay}
           className="flex items-center space-x-2 px-4 py-2 bg-white/10 hover:bg-white/20 rounded-full text-white border border-white/20"
         >
           {isPlaying ? <Pause size={16} /> : <Play size={16} />}
           <span className="text-sm font-medium">{isPlaying ? 'Pause' : 'Play'}</span>
-        </button>
+        </button> */}
       </div>
 
       {/* Slider */}

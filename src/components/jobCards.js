@@ -67,6 +67,7 @@ const JobCards = () => {
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <h1 className="text-4xl font-bold text-center text-blue-500 mb-6">Are you Searching for a Job?</h1>
       {/* First row - exactly 4 cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
         {firstRowCards.map((job, index) => (
@@ -76,16 +77,21 @@ const JobCards = () => {
       
      {/* Remaining cards in subsequent rows - centered */}
      {remainingCards.length > 0 && (
-  <div className="flex justify-center w-full p-0">
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-6 justify-items-center w-full max-w-screen-lg">
-      {remainingCards.map((job, index) => (
-        <div className="w-full max-w-sm" key={`remaining-${index}`}>
-          <JobCard job={job} index={index + 4} />
+      <div className="flex justify-center w-full p-0">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-6 justify-items-center w-full max-w-screen-lg">
+          {remainingCards.map((job, index) => (
+            <div className="w-full max-w-sm" key={`remaining-${index}`}>
+              <JobCard job={job} index={index + 4} />
+            </div>
+          ))}
         </div>
-      ))}
-    </div>
-  </div>
-)}
+   
+      </div>
+  
+      )}
+      <span>
+        <p className="text-center text-blue-600 p-4">Note: No or less job in your city? Don't worry! You can click on remote jobs</p>
+      </span>
     </div>
   )
 }
