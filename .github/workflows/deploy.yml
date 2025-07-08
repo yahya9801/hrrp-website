@@ -29,6 +29,6 @@ jobs:
         chmod 600 gatsby_key.pem  # 🔐 Very important
 
         mkdir -p ~/.ssh
-        ssh-keyscan -p 7861 ${{ secrets.SERVER_HOST }} >> ~/.ssh/known_hosts
+        ssh-keyscan -p 7861 ${{ secrets.SERVER_HOST }} >> /home/hrpostin/.ssh/known_hosts
 
-        scp -i gatsby_key.pem -P 7861 -r public/* ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }}:/var/www/html/jobs/
+        scp -i gatsby_key.pem -P 7861 -r public/* ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }}:/home/hrpostin/public
