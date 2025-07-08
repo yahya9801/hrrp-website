@@ -1,0 +1,31 @@
+name: HR Posting Partner
+
+on:
+  push:
+    branches: [main]  # Adjust if you're using another branch
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v3
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: 18
+
+    - name: Install Dependencies
+      run: npm install
+
+    - name: Build Gatsby Site
+      run: npm run build
+
+    - name: Deploy to Server via rsync
+      run: |
+        sudo apt-get update && sudo apt-get install -y rsync
+        echo "${{ secrets.SERVER_SSH_KEY }}" > gatsby_key.pem
+        chmod 600 gatsby_key.pem
+        rsync -az -e "ssh -i gatsby_key.pem -o StrictHostKeyChecking=no -p 22" public/ ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }}:/var/www/html/jobs/
